@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<style>
+		#test1 {
+			width: 50px;
+			height: 50px;
+			background: #f00;
+			position: relative;
+			margin: 10px;
+		}
+		#test2 {
+			width: 50px;
+			height: 50px;
+			background: #0f0;
+			position: relative;
+			margin: 10px;
+		}
+		#test3 {
+			width: 50px;
+			height: 50px;
+			background: #00f;
+			position: relative;
+			margin: 10px;
+		}
+	</style>
+	<script src="./jsGear.js"></script>
+</head>
+<body>
+	<div id="test1"></div>
+	<div id="test2"></div>
+	<div id="test3"></div>
+	<script>
+		var ts1 = new TimeSpace(2)
+		var ts2 = new TimeSpace(2)
+		var ts3 = new TimeSpace(3)
+
+
+		var test1 = document.getElementById('test1')
+		test1.style.left = '1px';
+		var test2 = document.getElementById('test2')
+		test2.style.left = '1px';
+		var test3 = document.getElementById('test3')
+		test3.style.left = '1px';
+
+		var t1 = test1.style
+		var p1 = ts1.setInterval(function() {
+			t1.left = parseFloat(t1.left.slice(0, -2), 10) + 1 + 'px'
+		}, 10)
+
+		var t2 = test2.style
+		var p2 = ts2.setInterval(function() {
+			t2.left = parseFloat(t2.left.slice(0, -2), 10) + 1 + 'px'
+		}, 10)
+
+		var t3 = test3.style
+		var p3 = ts3.setInterval(function() {
+			t3.left = parseFloat(t3.left.slice(0, -2), 10) + 0.1 + 'px'
+		}, 10)
+
+		console.log(p1)
+		console.log(p2)
+		console.log(p3)
+
+		setTimeout(function() {
+			ts3.clearInterval(p3)
+			ts2.clearInterval(p2)
+			ts1.clearInterval(p1)
+		}, 5000)
+
+		setTimeout(function() {
+			ts2.setRate(3)
+		}, 2000)
+
+	</script>
+</body>
+</html>
