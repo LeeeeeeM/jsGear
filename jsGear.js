@@ -2,7 +2,7 @@
 (function(global) {
 	// 设置rate  [0-5]
 
-	var __Date = global.Date;
+	var __Date = global.Date
 
 	function TimeLine(rate) {
 		this.timerId = 0
@@ -28,7 +28,7 @@
 				args: args,
 				repeat: true,
 				sum: 0
-			};
+			}
 			return this.timerId++
 		},
 		delQueue: function(id) {
@@ -80,7 +80,7 @@
 		},
 		init: function() {
 			var self = this
-			this.pid = global.setInterval(self.tickCycle.bind(self),100)
+			this.pid = global.setInterval(self.tickCycle.bind(self), 1)
 		},
 		dispose: function() {
 			global.clearInterval(this.pid)
